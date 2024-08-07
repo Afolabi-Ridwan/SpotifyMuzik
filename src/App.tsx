@@ -2,7 +2,7 @@ import "./App.css";
 import Loader from "./Pages/LoaderPage/loaderPage";
 import { useState, useEffect } from "react";
 import Homepage from "./Pages/HomePage/homePage";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Ui from "./Pages/HomePage/Ui/ui";
 
 function App() {
@@ -17,7 +17,10 @@ function App() {
   return (
     <div className="App">
       {loadingState ? <Loader /> : <Homepage />}
-          <Route path="/home" element={<Homepage/>}/>
+
+      <Routes>
+        <Route path="/home" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }

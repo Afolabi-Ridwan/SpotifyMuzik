@@ -1,7 +1,10 @@
-/* src/App.css */
 .searchResult {
     text-align: center;
     padding: 20px;
+    /* max-width: 70vw;
+    padding: 0 30px; */
+    /* position: absolute;
+    right: 0; */
   }
   
  .searchResult input {

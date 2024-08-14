@@ -12,8 +12,10 @@
   background-color: black;
   padding: 5px 30px 5px 25px;
   /* height: 100px; */
-  position: relative;
+  position: fixed;
+  /* position: relative; */
   left: 0;
+  z-index: 10;
 }
 
 #topMobileMenu #title {

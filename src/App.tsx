@@ -3,7 +3,6 @@ import Loader from "./Pages/LoaderPage/loaderPage";
 import { useState, useEffect } from "react";
 import Homepage from "./Pages/HomePage/homePage";
 import { Routes, Route } from "react-router-dom";
-import Ui from "./Pages/HomePage/Ui/ui";
 
 function App() {
   const [loadingState, setLoadingState] = useState(true);

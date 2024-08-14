@@ -1,10 +1,7 @@
 import "./menu.css";
-import {
-  getToken,
-  searchArtist,
-  getAlbums,
-} from "../../Services/Api/getArtistesID";
-import backwardIcon from "../../Assets/Images/back.JPG"
+import { searchArtist, getAlbums } from "../../Services/Api/getArtistesID";
+import { getToken } from "../../Services/Api/getToken";
+import backwardIcon from "../../Assets/Images/back.JPG";
 import { MenuTypes } from "../types";
 
 export const Menu: React.FC<MenuTypes> = ({
@@ -35,11 +32,11 @@ export const Menu: React.FC<MenuTypes> = ({
   };
 
   const inputHandler = (value: string) => {
-    setArtistName(value)    
-  }
+    setArtistName(value);
+  };
 
   return (
-    <div>
+    <div className="menuCont">
       <div id="menuContainer">
         <div>
           <div> Spotify Muzik</div>
@@ -47,11 +44,10 @@ export const Menu: React.FC<MenuTypes> = ({
 
         <div className="menu">
           <form onSubmit={handleSearch}>
-            
             <input
               placeholder="Search songs, albums, artists, podcasts"
               onChange={(e) => inputHandler(e.target.value)}
-              value={ artistName}
+              value={artistName}
             />
             <div className="backwardIcon">
               <img src={backwardIcon} alt="backward" />

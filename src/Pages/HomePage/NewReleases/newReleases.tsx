@@ -1,4 +1,3 @@
-// src/components/NewReleases.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { getNewReleases } from "../../../Services/Api/newReleasesAPI";
 import "./newReleases.css";
@@ -7,11 +6,13 @@ import Slider from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Album, errorProps } from "../../types";
 
-
-const NewReleases: React.FC<errorProps> = ({errorState, errorHandler, barsToggleState}) => {
+const NewReleases: React.FC<errorProps> = ({
+  errorState,
+  errorHandler,
+  barsToggleState,
+}) => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [loadingState, setLoadingState] = useState<boolean>(false);
-
 
   const sliderRef = useRef<Slider>(null);
 
@@ -20,23 +21,25 @@ const NewReleases: React.FC<errorProps> = ({errorState, errorHandler, barsToggle
       try {
         const data = await getNewReleases();
         setAlbums(data.albums.items);
-        console.log(data)
+        console.log(data);
         setLoadingState(true);
       } catch (err) {
-        errorHandler("Failed to fetch new releases. Check your internet connection");
+        errorHandler(
+          "Failed to fetch new releases. Check your internet connection"
+        );
       }
     };
 
     fetchNewReleases();
   }, []);
 
-
-  if( typeof errorState === "string"){
-    return <p style={{color: "white", textAlign: "center"}}>{errorState}</p>
+  if (typeof errorState === "string") {
+    return <p style={{ color: "white", textAlign: "center" }}>{errorState}</p>;
   }
 
   return (
-    <div className={`container ${barsToggleState && "biggerContainer"}`}>
+    <div className={`container newReleases `}>
+      <h1 style={{ color: "white" }}>New Releases</h1>
       {loadingState ? (
         <div>
           <div className="navArrow">
@@ -54,8 +57,6 @@ const NewReleases: React.FC<errorProps> = ({errorState, errorHandler, barsToggle
             </button>
           </div>
 
-          <h1 style={{ color: "white" }}>New Releases</h1>
-
           <ul>
             <Slider ref={sliderRef} {...settings}>
               {albums.map((album, index) => (
@@ -69,15 +70,17 @@ const NewReleases: React.FC<errorProps> = ({errorState, errorHandler, barsToggle
                   </div>
                   <p>{album.name}</p>
                   <p></p>
-                  <p id="typeAndArtiste">{album.album_type} ◾ {album.artists.map((artist) => artist.name).join(", ")}</p>
+                  <p id="typeAndArtiste">
+                    {album.album_type} ◾{" "}
+                    {album.artists.map((artist) => artist.name).join(", ")}
+                  </p>
                 </li>
               ))}
             </Slider>
           </ul>
         </div>
       ) : (
-        <div className="spinnerCont">
-        </div>
+        <div className="spinnerCont"></div>
       )}
     </div>
   );

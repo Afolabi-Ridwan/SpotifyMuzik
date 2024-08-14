@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import UserLocation from "../../Pages/HomePage/UserLocation/userLocation";
+import { useContext, useEffect } from "react";
 import { countries } from "../CountryCodes/country";
 import Context from "../Context/createContext";
 

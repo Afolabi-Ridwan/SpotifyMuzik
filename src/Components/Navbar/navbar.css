@@ -6,7 +6,7 @@ body {
   width: 300px;
   border-right: 1px solid rgba(231, 231, 231, 0.3);
   height: 100vh;
-  padding: 0 30px;
+  padding: 0 15px;
   position: fixed;
 }
 
@@ -17,7 +17,6 @@ body {
 .navbar .header  {
  margin-left: 10px;
  display: flex;
-
  align-items: center;
  /* justify-content: center; */
 }
@@ -92,6 +91,10 @@ body {
   display: none;
 }
 
+.navbar.smallerNavbar #container {
+  border-right: none;
+}
+
 .navbar #userInfos button {
   width: 100%;
   padding: 10px 0;
@@ -163,8 +166,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid rgba(231, 231, 231, 0.1);
+    border-right: none;
   }
+
+  .navbar .header  {
+    margin-left: 0;
+    
+   }
 
   .navbar #userInfos {
     display: none;

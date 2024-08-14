@@ -42,7 +42,6 @@ const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName, bars
             <Link to={"/home"} className="linkTag">
               <p
                 onClick={returnHome}
-              
               >
                 {" "}
                 <span>

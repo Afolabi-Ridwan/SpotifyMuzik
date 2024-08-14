@@ -25,7 +25,7 @@ const TopMobileMenu = () => {
     <div id="topMobileMenu">
       <div id="title">
         <FaBars />
-        <p> Muzik</p>
+        <p> Spotify Muzik</p>
       </div>
 
       <div className={`inputTab ${inputState && "openInput"}`}>

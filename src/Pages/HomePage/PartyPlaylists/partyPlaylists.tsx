@@ -1,16 +1,13 @@
-// src/App.tsx
 import React, { useEffect, useState, useRef } from "react";
 import "../NewReleases/newReleases.css";
-import {
-  getToken,
-  getPlaylists,
-} from "../../../Services/Api/partyPlaylistsAPI";
+import { getPlaylists } from "../../../Services/Api/partyPlaylistsAPI";
+import { getToken } from "../../../Services/Api/getToken";
 import { settings } from "../../../Providers/sliderSetting";
 import Slider from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { partyPlaylistsProps } from "../../types";
+import { playlistsProps } from "../../types";
 
-const PartyPlaylists: React.FC<partyPlaylistsProps> = ({barsToggleState}) => {
+const PartyPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
   const [playlists, setPlaylists] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,7 +28,12 @@ const PartyPlaylists: React.FC<partyPlaylistsProps> = ({barsToggleState}) => {
   }, []);
 
   return (
-    <div className={`container partyPlaylistsContainer ${barsToggleState && "biggerContainer"}  `}>
+
+    
+    <div
+      className={`container partyPlaylistsContainer`}
+    >
+      <h1>Party Playlists</h1>
       <div className="navArrow">
         <button
           onClick={() => sliderRef.current?.slickPrev()}
@@ -47,27 +49,25 @@ const PartyPlaylists: React.FC<partyPlaylistsProps> = ({barsToggleState}) => {
         </button>
       </div>
 
-      <h1>Party Playlists</h1>
       {error && <p>{error}</p>}
 
       <ul>
-            <Slider ref={sliderRef} {...settings}>
-              {playlists.map((playlist, index) => (
-                <li key={index}>
-                  <div className="imageCont">
-                    <img
-                      src={playlist.images[0].url}
-                      alt={playlist.name}
-                      width={100}
-                    />
-                  </div>
-                  <p>{playlist.name}</p>
-                </li>
-              ))}
-            </Slider>
-          </ul>
-        
-      </div>
+        <Slider ref={sliderRef} {...settings}>
+          {playlists.map((playlist, index) => (
+            <li key={index}>
+              <div className="imageCont">
+                <img
+                  src={playlist.images[0].url}
+                  alt={playlist.name}
+                  width={100}
+                />
+              </div>
+              <p>{playlist.name}</p>
+            </li>
+          ))}
+        </Slider>
+      </ul>
+    </div>
   );
 };
 

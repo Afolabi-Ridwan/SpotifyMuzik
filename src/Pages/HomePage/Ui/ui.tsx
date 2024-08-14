@@ -13,6 +13,9 @@ import SearchResult from "../SearchResult/searchResult";
 
 import { UiProps } from "../../types";
 import PartyPlaylists from "../PartyPlaylists/partyPlaylists";
+import RandB from "../RandBPlaylists/randb";
+import SoulPlaylists from "../SoulPlaylists/soulPlaylists";
+
 const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
   const sliderRef = useRef<Slider>(null);
 
@@ -40,15 +43,6 @@ const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
           <TopMobileMenu />
         </div>
         <div className={`container ${barsToggleState && "biggerContainer"}`}>
-          <Menu
-            setErrorHandler={setError}
-            setAlbumsHandler={setAlbums}
-            setArtistName={setArtistName}
-            artistName={artistName}
-            setSearchState={setSearchState}
-            searchState={searchState}
-          />
-
           {resultHandler?.length > 1 ? (
             <div>
               <div className="navArrow">
@@ -85,15 +79,25 @@ const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
               </div>
             </div>
           ) : (
-            <div>
+            <div className={`pagesCont ${barsToggleState && "biggerContainer"}`}>
               {!searchState ? (
-                <div>
+                <div >
+                  <Menu
+                    setErrorHandler={setError}
+                    setAlbumsHandler={setAlbums}
+                    setArtistName={setArtistName}
+                    artistName={artistName}
+                    setSearchState={setSearchState}
+                    searchState={searchState}
+                  />
                   <NewReleases
                     errorState={errorState}
                     errorHandler={errorHandler}
                     barsToggleState={barsToggleState}
                   />
-                    <PartyPlaylists barsToggleState={barsToggleState}/>
+                  <PartyPlaylists barsToggleState={barsToggleState} />
+                  <RandB barsToggleState={barsToggleState} />
+                  <SoulPlaylists barsToggleState={barsToggleState} />
                 </div>
               ) : (
                 <SearchResult

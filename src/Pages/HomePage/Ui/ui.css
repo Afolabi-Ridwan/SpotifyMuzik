@@ -8,13 +8,25 @@ body{
 }
 
 .container{
-    padding: 0 30px;
-    width: 70vw;
+    /* padding: 0 30px; */
+    /* width: 70vw; */
 }
 
-.container.biggerContainer{
+/* .container.biggerContainer{
     width: 80vw;
-  }
+  } */
+
+.pagesCont{
+    max-width: 70vw;
+    position: absolute;
+    right: 0;
+    padding: 0 30px;
+    /* width: 70vw; */
+}
+
+.pagesCont.biggerContainer{
+    max-width: 80vw;
+}
 
 .leftArrow, .rightArrow{
     height: 30px;
@@ -41,4 +53,10 @@ body{
 .images{
     border-radius: 30%;
     width: 90%;
+}
+
+@media (max-width: 650px){
+    .pagesCont{
+        max-width: 85vw;
+    }
 }

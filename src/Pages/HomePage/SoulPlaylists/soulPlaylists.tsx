@@ -40,9 +40,7 @@ const SoulPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
   console.log(filteredPlaylists);
 
   return (
-    <div
-      className={`container soulPlaylistsContainer`}
-    >
+    <div className={`container soulPlaylistsContainer`}>
       {error && <p>{error}</p>}
 
       <h1>Soul Playlists</h1>
@@ -66,7 +64,9 @@ const SoulPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
         <Slider ref={soulSliderRef} {...settings}>
           {filteredPlaylists.map((playlist: any) => (
             <li key={playlist.id}>
-              <img src={playlist.images[0]?.url} alt={playlist.name} />
+              <div className="imageCont">
+                <img src={playlist.images[0]?.url} alt={playlist.name} />
+              </div>
               <p>{playlist.name}</p>
             </li>
           ))}

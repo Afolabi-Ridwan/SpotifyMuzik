@@ -78,7 +78,6 @@ console.log(a)
               <div className="imageCont">
                 <img src={playlist.images[0]?.url} alt={playlist.name} />
               </div>
-
               <p>{playlist.name}</p>
             </li>
           ))}

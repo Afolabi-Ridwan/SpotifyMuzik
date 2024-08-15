@@ -2,6 +2,7 @@
   color: white;
   text-align: left;
   margin-left: 10px;
+  max-width: 80vw;
 }
 
 .container p:first-of-type{
@@ -15,17 +16,10 @@
   margin-block-end: 0;
   padding-inline-start: 0;
 }
+
 .container.newReleases{
   margin-bottom: -50px;
 }
-
-.container.newRealeses.biggerContainer,
-.container.partyPlaylistsContainer.biggerContainer,
-.container.randbContainer.biggerContainer,
-.container.soulPlaylistsContainer.biggerCOntainer{
-  /* max-width: 80vw; */
-}
-
 
 .container img {
   border-radius: 10px;
@@ -52,5 +46,11 @@
 @media(max-width: 900px){
   .container.newReleases{
     margin-top: 90px;
+  }
+}
+
+@media (max-width: 600px){
+  .container.randbContainer{
+    margin-bottom: -50px;
   }
 }

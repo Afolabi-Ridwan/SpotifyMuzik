@@ -22,6 +22,7 @@ const NewReleases: React.FC<errorProps> = ({
         const data = await getNewReleases();
         setAlbums(data.albums.items);
         console.log(data);
+
         setLoadingState(true);
       } catch (err) {
         errorHandler(

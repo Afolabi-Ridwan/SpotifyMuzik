@@ -11,3 +11,10 @@ body{
 }
 
 
+.homepage{
+    opacity: 0;
+}
+
+.homepage.display{
+    opacity: 1;
+}

@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { countries } from "../CountryCodes/country";
 import Context from "../Context/createContext";
-
 interface TrendingComponent {
   updateResultHandler: (result: object) => void;
   setLoadingHandler: (isLoading: boolean) => void;

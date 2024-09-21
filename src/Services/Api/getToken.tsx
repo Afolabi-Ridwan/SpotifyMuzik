@@ -12,6 +12,8 @@ export const getToken = async (): Promise<string> => {
       'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret),
     },
   });
-
   return response.data.access_token;
+
+
 };
+

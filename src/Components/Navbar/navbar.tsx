@@ -10,26 +10,48 @@ import {
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { NavbarTypes } from "../types";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { BarsToggleContext } from "../../Services/Context/barsToggleContext";
 
-
-const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName, barsToggleState, setBarsToggleState }) => {
+const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, setArtistName }) => {
   const returnHome = () => {
-    searchStateHandler(false);
-    setArtistName("");
+    searchStateHandler && searchStateHandler(false);
+    setArtistName && setArtistName("");
   };
 
+  const {setBarsToggleState} = useContext(BarsToggleContext)
   const barsToggleHandler = () => {
     setBarsToggleState(prev => !prev);    
   };
 
+  const [scrollState, setScrollState] = useState(false);
+
+  const {barsToggleState} = useContext(BarsToggleContext)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrollState(true);
+      } else {
+        setScrollState(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={` navbar ${barsToggleState && "smallerNavbar"}`}>
-      <div id="container">
+    <div className={` navbar  ${barsToggleState && "smallerNavbar"} ${mobileMenuState && "openMenu"} ${scrollState && "scrolled"}`}>
+      <div className={`container ${scrollState && "scrolled"}`}>
         <div className="header">
           <p>
             {" "}
             <span
-              style={{ cursor: "pointer", fontSize: "23px" }}
+              style={{ cursor: "pointer", fontSize: "23px", padding: "0",}}
               onClick={barsToggleHandler}
             >
               <FaBars />
@@ -39,7 +61,7 @@ const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName, bars
         </div>
         <div id="menu">
           <div id="lists">
-            <Link to={"/home"} className="linkTag">
+            <Link to={"/"} className="linkTag">
               <p
                 onClick={returnHome}
               >
@@ -110,3 +132,4 @@ const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName, bars
 };
 
 export default Navbar;
+

@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import UserLocation from "../HomePage/UserLocation/userLocation";
 import Context from "../../Services/Context/createContext";
 
+const context = {
+  usercountry: "",
+  tracks: ""
+}
+
 const Loader = () => {
   const [userCountry, setUserCountry] = useState("");
   console.log(userCountry)
@@ -16,7 +21,7 @@ const Loader = () => {
 
   return (
     <div>
-      <Context.Provider value={{userCountry: userCountry}}>      
+      <Context.Provider value={{...context, userCountry: userCountry}}>      
         <div className="loaderPage">
           <img src={spotifyLogo} alt="spotify-logo" />
         </div>

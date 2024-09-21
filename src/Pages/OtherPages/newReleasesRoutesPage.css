@@ -1,0 +1,135 @@
+.newReleasesRoutesPage {
+  display: flex;
+  overflow-x: hidden;
+  
+}
+
+.tracksCont {
+  /* height: 60vh; */
+}
+
+.newReleasesRoutesPage .artworkAndName {
+  width: 500px;
+  margin-right: 50px;
+  /* position: fixed; */
+  text-align: center;
+}
+
+.newReleasesRoutesPage .container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* padding: 0 40px 0 50px; */
+  margin-top: 120px;
+}
+
+.newReleasesRoutesPage .albumInfo {
+  width: 70vw;
+  display: flex;
+  align-items: flex-start;
+}
+
+.newReleasesRoutesPage .albumInfo div:first-of-type p {
+  /* text-align: center; */
+}
+
+.newReleasesRoutesPage .albumInfo div .albumName {
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 0px;
+}
+
+.newReleasesRoutesPage .albumInfo .typeAndDate {
+  margin-top: -17px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: rgb(201, 201, 201);
+}
+
+.newReleasesRoutesPage .albumInfo .artworkAndName p:last-of-type {
+  margin-top: -17px;
+  color: rgb(201, 201, 201);
+}
+
+.newReleasesRoutesPage ul {
+  padding: 0;
+}
+
+.newReleasesRoutesPage li {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.newReleasesRoutesPage li p:first-of-type {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(201, 201, 201);
+}
+
+.newReleasesRoutesPage li div:first-of-type p:last-of-type {
+  text-transform: capitalize;
+}
+
+.newReleasesRoutesPage li div:last-of-type p {
+  font-weight: 400;
+  color: rgb(201, 201, 201);
+}
+
+.newReleasesRoutesPage li div:first-of-type {
+  display: flex;
+  align-items: center;
+}
+
+.newReleasesRoutesPage .tracknameAndArtists {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.newReleasesRoutesPage .tracknameAndArtists .trackName {
+  font-size: 20px;
+}
+
+.newReleasesRoutesPage .tracknameAndArtists .artistName {
+  font-size: 15px;
+  margin-top: -30px;
+}
+
+.navBarAndMenu {
+  width: 200px;
+}
+
+.newReleasesRoutesPage .artistName {
+  display: flex;
+}
+
+@media (max-width: 800px) {
+  .newReleasesRoutesPage .albumInfo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .newReleasesRoutesPage .artworkAndName {
+    width: unset;
+    margin-right: 0;
+  }
+
+  .newReleasesRoutesPage .navBarAndMenu {
+    display: none;
+  }
+
+  .newReleasesRoutesPage .albumInfo {
+    width: 100vw;
+  }
+}

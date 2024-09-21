@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background: black;
 }
 
 #homepage h1{
@@ -12,7 +12,7 @@ body{
 
 
 .homepage{
-    opacity: 0;
+    opacity: -1;
 }
 
 .homepage.display{

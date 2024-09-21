@@ -5,11 +5,11 @@ import { getPlaylistsByGenre } from "../../../Services/Api/r&bAPI";
 import Slider from "react-slick";
 import { settings } from "../../../Providers/sliderSetting";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { playlistsProps } from "../../types";
 
-const SoulPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
+const SoulPlaylists = () => {
   const [soulPlaylists, setSoulPlaylists] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [isMobileView, setIsMobileView] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchPlaylists = async () => {
@@ -27,6 +27,19 @@ const SoulPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
     fetchPlaylists();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 600);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const soulSliderRef = useRef<Slider>(null);
 
   const filteredPlaylists = soulPlaylists.filter((playlists) => {
@@ -37,41 +50,55 @@ const SoulPlaylists: React.FC<playlistsProps> = ({ barsToggleState }) => {
     return newPlaylists;
   });
 
-  console.log(filteredPlaylists);
-
   return (
     <div className={`container soulPlaylistsContainer`}>
       {error && <p>{error}</p>}
 
       <h1>Soul Playlists</h1>
 
-      <div className="navArrow">
-        <button
-          onClick={() => soulSliderRef.current?.slickPrev()}
-          className="leftArrow"
-        >
-          <FaChevronLeft />
-        </button>
-        <button
-          onClick={() => soulSliderRef.current?.slickNext()}
-          className="rightArrow"
-        >
-          <FaChevronRight />
-        </button>
+      <div>
+        {isMobileView ? (
+          <ul className="scrollableList">
+            {filteredPlaylists.map((playlist, index) => (
+              <li key={index} className="scrollableItem">
+                <div className="imageCont">
+                  <img src={playlist.images[0].url} alt={playlist.name} />
+                </div>
+                <p>{playlist.name}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>
+            <div className="navArrow">
+              <button
+                onClick={() => soulSliderRef.current?.slickPrev()}
+                className="leftArrow"
+              >
+                <FaChevronLeft />
+              </button>
+              <button
+                onClick={() => soulSliderRef.current?.slickNext()}
+                className="rightArrow"
+              >
+                <FaChevronRight />
+              </button>
+            </div>
+            <ul>
+              <Slider ref={soulSliderRef} {...settings}>
+                {filteredPlaylists.map((playlist: any) => (
+                  <li key={playlist.id}>
+                    <div className="imageCont">
+                      <img src={playlist.images[0]?.url} alt={playlist.name} />
+                    </div>
+                    <p>{playlist.name}</p>
+                  </li>
+                ))}
+              </Slider>
+            </ul>
+          </div>
+        )}
       </div>
-
-      <ul>
-        <Slider ref={soulSliderRef} {...settings}>
-          {filteredPlaylists.map((playlist: any) => (
-            <li key={playlist.id}>
-              <div className="imageCont">
-                <img src={playlist.images[0]?.url} alt={playlist.name} />
-              </div>
-              <p>{playlist.name}</p>
-            </li>
-          ))}
-        </Slider>
-      </ul>
     </div>
   );
 };

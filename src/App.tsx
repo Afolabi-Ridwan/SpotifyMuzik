@@ -2,25 +2,68 @@ import "./App.css";
 import Loader from "./Pages/LoaderPage/loaderPage";
 import { useState, useEffect } from "react";
 import Homepage from "./Pages/HomePage/homePage";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import TopMobileMenu from "./Components/Menu/TopMobileMenu/topMobileMenu";
+import Explore from "./Pages/Explore/explore";
+import { useLocation } from "react-router-dom";
+import Context from "./Services/Context/createContext";
+// import MyContext from "./Providers/usecontext";
+import { BarsToggleContext } from "./Services/Context/barsToggleContext";
+import NewReleasesRoutesPage from "./Pages/OtherPages/newReleasesRoutesPage";
+import Navbar from "./Components/Navbar/navbar";
 
 function App() {
-  const [loadingState, setLoadingState] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+  const [barsToggleState, setBarsToggleState] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoadingState(false);
-    }, 3000);
-  }, []);
+    if (!hasLoadedOnce) {
+      setTimeout(() => {
+        setShowLoader(false);
+        setHasLoadedOnce(true);
+      }, 2000);
+    } else {
+      setShowLoader(false);
+    }
+  }, [hasLoadedOnce]);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      if (hasLoadedOnce) {
+        setShowLoader(false);
+      }
+    }
+  }, [location, hasLoadedOnce]);
+
+
 
   return (
-    <div className="App">
-      {loadingState ? <Loader /> : <Homepage />}
-
-      <Routes>
-        <Route path="/home" element={<Homepage />} />
-      </Routes>
-    </div>
+    <BarsToggleContext.Provider value={{ barsToggleState, setBarsToggleState }}>
+      <div className="App">
+        {!showLoader && (
+          <div>
+            <TopMobileMenu />
+            <div className="navBarAndMenu">
+              <Navbar />
+            </div>
+          </div>
+        )}
+        {showLoader ? (
+          <Loader />
+        ) : (
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/home" element={<Explore />} />
+                <Route
+                  path="/newReleasesRoutesPage/:album"
+                  element={<NewReleasesRoutesPage />}
+                />
+              </Routes>
+        )}
+      </div>
+    </BarsToggleContext.Provider>
   );
 }
 

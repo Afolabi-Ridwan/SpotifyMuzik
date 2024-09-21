@@ -1,62 +1,84 @@
-body{
-    background-color: black;
-   
+.body {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
-#homePageUi{
-    display: flex;
+#homePageUi {
+  width: 100%;
+  display: flex;
 }
 
-.container{
-    /* padding: 0 30px; */
-    /* width: 70vw; */
+.pagesCont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px 0 50px;
 }
 
-/* .container.biggerContainer{
-    width: 80vw;
-  } */
+.pagesCont .allPlaylists {
+  max-width: 70vw;
+  margin-top: 70px;
+}
 
-.pagesCont{
-    max-width: 70vw;
+.navBarAndMenu {
+  width: 200px;
+}
+
+.pagesCont .allPlaylists.biggerContainer {
+  max-width: 80vw;
+}
+
+.leftArrow,
+.rightArrow {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: white 1px solid;
+  color: white;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.navArrow {
+  margin-top: 10px;
+  display: flex;
+  justify-content: right;
+  margin-right: 10px;
+}
+
+.sliderCont {
+  position: absolute;
+  right: 0;
+}
+
+.images {
+  border-radius: 30%;
+  width: 90%;
+}
+
+
+
+@media (max-width: 800px) {
+  .pagesCont {
+    max-width: 100vw;
     position: absolute;
-    right: 0;
-    padding: 0 30px;
-    /* width: 70vw; */
+    left: 0;
+    padding: 0 100px;
+  }
+
+  .pagesCont .allPlaylists {
+    max-width: 100vw;
+    margin-top: 0px;
+  }
+
+  .pagesCont .allPlaylists.biggerContainer {
+    max-width: 100vw;
+  }
+
+  
 }
 
-.pagesCont.biggerContainer{
-    max-width: 80vw;
-}
-
-.leftArrow, .rightArrow{
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: white 1px solid;
-    color: white;
-    margin-bottom: 15px;
-    margin-left: 10px;
-}
-
-.navArrow{
-    margin-top: 10px;
-    display: flex;
-    justify-content: right;
-}
-
-.sliderCont{
-    position: absolute;
-    right: 0;
-}
-
-.images{
-    border-radius: 30%;
-    width: 90%;
-}
-
-@media (max-width: 650px){
-    .pagesCont{
-        max-width: 100vw;
-    }
-}

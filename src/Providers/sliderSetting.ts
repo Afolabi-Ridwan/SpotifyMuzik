@@ -22,12 +22,9 @@ export const settings = {
           initialSlide: 2,
         },
       },
-      {
-        breakpoint: 580,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      // {
+      //   breakpoint: 600,
+      //   settings: {"unslick"}
+      // },
     ],
   };

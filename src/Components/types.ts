@@ -1,8 +1,8 @@
 export interface NavbarTypes {
-    searchStateHandler: React.Dispatch<React.SetStateAction<boolean | null>>;
-    setArtistName: React.Dispatch<React.SetStateAction<string>>;
-    barsToggleState: boolean;
-    setBarsToggleState: React.Dispatch<React.SetStateAction<boolean>>;
+    searchStateHandler?: React.Dispatch<React.SetStateAction<boolean | null>>;
+    setArtistName?: React.Dispatch<React.SetStateAction<string>>;
+    // barsToggleState: boolean;
+    mobileMenuState?: boolean;
   }
 
   export interface MenuTypes {
@@ -12,4 +12,8 @@ export interface NavbarTypes {
     artistName: string;
     setSearchState: React.Dispatch<React.SetStateAction<boolean | null>>;
     searchState: boolean | null;
+  }
+
+  export interface topMobileMenuProps {
+    setBarsToggleState: React.Dispatch<React.SetStateAction<boolean>>;
   }

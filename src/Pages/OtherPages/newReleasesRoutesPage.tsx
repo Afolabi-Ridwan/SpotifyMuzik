@@ -137,7 +137,7 @@ const NewReleasesRoutesPage = () => {
                       <li key={index}>
                         <div>
                           <div>
-                          <p style={{fontSize: "17px"}}>{index + 1}</p>
+                          <p style={{fontSize: "17px", width: "20px", display: "flex", justifyContent: "center"}}>{index + 1}</p>
                           </div>
                           <div className="tracknameAndArtists">
                             <p className="trackName">{track.name}</p>
@@ -151,20 +151,23 @@ const NewReleasesRoutesPage = () => {
                                       </p>
                                     ) : track.artists.length > 2 ? (
                                       <p>
-                                        {track.artists.length - 1 !== index && (
-                                          <span>{artists.name}</span>
+                                        {index === 0  && (
+                                          <span >{artists.name}</span>
                                         )}{" "}
+                                        {track.artists.length - 2 === index && (
+                                          <span style={{marginLeft: "5px"}}> {artists.name} </span>
+                                        )}
                                         {track.artists.length - 1 !== index &&
                                           track.artists.length - 2 !==
-                                            index && <span>, &nbsp;</span>}{" "}
+                                            index && <span >, </span>}{" "}
                                         {track.artists.length - 1 === index && (
-                                          <span>&nbsp; & {artists.name} </span>
+                                          <span style={{marginLeft: "5px"}}> & {artists.name} </span>
                                         )}{" "}
                                       </p>
                                     ) : track.artists.length  === 2 ? (
                                       <p>
                                          
-                                       {index === 0 ? <span>{artists.name} & &nbsp;</span> : <span>{artists.name}</span>}
+                                       {index === 0 ? <span>{artists.name} &</span> : <span style={{marginLeft: "5px"}}>{artists.name}</span>}
                                       </p>
                                     ): (<></>)}
                                   </div>)

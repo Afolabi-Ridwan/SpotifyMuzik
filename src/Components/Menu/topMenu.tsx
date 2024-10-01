@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import "./topMobileMenu.css";
-import { FaBars, FaSearch, FaTrash } from "react-icons/fa";
-import repeatIcon from "../../../Assets/Images/repeat.JPG";
-import backwardIcon from "../../../Assets/Images/back.JPG";
-import { BarsToggleContext } from "../../../Services/Context/barsToggleContext";
+import { useEffect, useState } from "react";
+import style from "./topMenu.module.css";
+import { FaArrowLeft, FaBars, FaSearch, FaTrash } from "react-icons/fa";
+import repeatIcon from "../../Assets/Images/repeat.JPG";
+import { BarsToggleContext } from "../../Services/Context/barsToggleContext";
 import { useContext } from "react";
-import { topMobileMenuProps } from "../../types";
+import logoImg from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png";
+import { search } from "../../Services/Api/searchAPI";
 
 const TopMobileMenu = () => {
   const [inputState, setInputState] = useState(false);
+  const [input, setInput] = useState("");
   const [scrollState, setScrollState] = useState(false);
 
   const searchBoxHandler = () => {
@@ -29,7 +30,6 @@ const TopMobileMenu = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -41,30 +41,43 @@ const TopMobileMenu = () => {
     setBarsToggleState((prev) => !prev);
   };
 
+  const setInputHandler = (e: any) => {
+    setInput(e.target.value)
+  }
+
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    search(input);
+  }
+
   return (
-    <div className={`topMobileMenu  ${scrollState && "scrolled"}`}>
-      <div id="title">
-        <div style={{cursor: "pointer"}}>
+    <div className={`${style.topMobileMenu}  ${scrollState && style.scrolled}`}>
+      <div id={style.title}>
+        <div style={{ cursor: "pointer" }}>
           <FaBars onClick={barsToggleHandler} />
         </div>
-        <p> Spotify Muzik</p>
+        <img src={logoImg} alt="logo" />
       </div>
 
-      <div className={`inputTab `}>
-        <div className={`in ${barsToggleState && "smallerNavbar"}`}>
-          <div className="input">
-            <input placeholder="Search songs, albums, artists, podcasts" />
+      <div className={`${style.inputTab} ${inputState && style.openInput} `}>
+        <div
+          className={`${style.inputCont} ${
+            barsToggleState && style.smallerNavbar
+          }`}
+        >
+          <form className={style.input} onSubmit={e => submitHandler(e)}>
+            <input placeholder="Search songs, albums, artists, podcasts" onChange={ (e: any) => setInputHandler(e)}/>
 
             <div
-              className="backwardIcon"
+              className={style.backwardIcon}
               onClick={closeSearchBox}
               style={{ color: "white" }}
             >
-              <FaSearch />
+              <FaArrowLeft />
             </div>
-          </div>
+          </form>
 
-          <div className="previousSearches">
+          <div className={style.previousSearches}>
             <ul>
               <li>
                 <div>
@@ -95,13 +108,19 @@ const TopMobileMenu = () => {
               </li>
             </ul>
           </div>
-          <div className="menu">
-            <div className="searchIcon" onClick={searchBoxHandler}>
-              <FaSearch />
-            </div>
-            <p className="user">A</p>
+
+          <div className={`${style.menu} ${style.desktopViewMenu}`}>
+            <div className={style.searchIcon} onClick={searchBoxHandler}></div>
+            <p className={style.user}>A</p>
           </div>
         </div>
+      </div>
+
+      <div className={`${style.menu} ${style.mobileViewMenu}`}>
+        <div className={style.searchIcon} onClick={searchBoxHandler}>
+          <FaSearch />
+        </div>
+        <p className={style.user}>A</p>
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ const Trending: React.FC<TrendingComponent> = ({
   errorMessageHandler,
 }) => {
   const {userCountry} = useContext(Context)
-  console.log(userCountry)
 
   const filterCountry = countries?.filter(
     (eachCountry) =>

@@ -4,7 +4,6 @@ body {
 
 .navbar {
   width: 100%;
-  /* margin: 0 auto; */
 }
 
 .navbar .container {
@@ -13,26 +12,17 @@ body {
   padding: 0 15px;
   position: fixed;
   background-color: black;
-  z-index: 5;
-  /* bottom: 0; */
 }
-
-/* .navbar .container.scrolled{
-  height: 95vh;
-} */
 
 .navbar.smallerNavbar .container {
   border-right: none;
+  background-color: unset;
 }
 
-
-
 .navbar .header {
-  /* margin-left: 10px; */
   display: flex;
   align-items: center;
-  z-index: -20;
-  opacity: 0;
+  display: none;
 }
 
 .navbar .header span {
@@ -52,10 +42,12 @@ body {
   width: 100%;
   border-bottom: 1px solid rgba(231, 231, 231, 0.3);
   padding-bottom: 20px;
+  margin-top: 90px;
 }
 
 .navbar.smallerNavbar #menu {
   border-bottom: none;
+  margin-left: -10px;
 }
 
 .navbar #menu p {
@@ -88,14 +80,11 @@ body {
 
 .navbar #lists p {
   cursor: pointer;
-}
-
-.navbar.smallerNavbar #menu {
-  margin-left: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar.smallerNavbar #lists p {
-  width: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,15 +92,12 @@ body {
   margin-top: 0px;
 }
 
-.navbar.smallerNavbar .container{
-  width: 80px;
-}
-  .navbar.smallerNavbar .container.scrolled{
-    border-right: 1px solid rgba(231, 231, 231, 0.2);
+.navbar.smallerNavbar .container.scrolled {
+  border-right: 1px solid rgba(231, 231, 231, 0.2);
 }
 
 .navbar.smallerNavbar #lists p span:last-of-type {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .navbar.smallerNavbar #userInfos {
@@ -120,6 +106,10 @@ body {
 
 .navbar.smallerNavbar .container {
   border-right: none;
+}
+
+.navbar.smallerNavbar #menu span {
+  margin-right: 0;
 }
 
 .navbar #userInfos button {
@@ -183,67 +173,87 @@ body {
   display: block;
 }
 
-@media (max-width: 900px) {
-  .navbar .header span {
-    margin-right: 0;
-  }
-
-  .navbar .container {
-    /* width: 20px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: none;
-  }
-
-  .navbar .header {
-    margin-left: 0;
-  }
-
-  .navbar #userInfos {
-    display: none;
-  }
-
-  .navbar .header p span:last-of-type {
-    display: none;
-  }
-
-  .navbar #menu p {
-    flex-direction: column;
-    align-items: center;
-    font-size: 10px;
-  }
-
-  .navbar #menu p span:last-of-type {
-    font-size: 10px;
-  }
-
-  .navbar #menu span {
-    margin-right: 0px;
-    /* font-size: 20px; */
-  }
-
-  .navbar #menu {
-    border: none;
-  }
-}
-
-@media (max-width: 650px) {
+@media (max-width: 800px) {
   .navbar {
-    /* transform: translateX(); */
     transition: 1s ease-in-out;
     position: fixed;
     left: 0;
-    display: none;
-  }
-
-  .navbar.openMenu {
-    transform: translateX(0);
+    z-index: 150;
+    transform: translateX(-200px);
+    transition: 1s ease-in-out;
   }
 
   .navbar .container {
     background-color: black;
-    height: 100vh;
-    width: 100vw;
+  }
+
+  .navbar.smallerNavbar .container {
+    background-color: black;
+    box-shadow: 10px 0 15px rgba(76, 76, 76, 0.3);
+  }
+
+  .navbar.active {
+    transform: translateX(0px);
+  }
+
+  .navbar #menu {
+    margin-top: 0px;
+  }
+
+  .navbar .header {
+    display: block;
+    margin-top: -15px;
+    margin-left: -5px;
+  }
+
+  .navbar .container {
+    align-items: unset;
+  }
+
+  .navbar .header p span:last-of-type {
+    display: block;
+  }
+
+  .navbar.smallerNavbar .container {
+    width: 200px;
+  }
+
+  .navbar.smallerNavbar #lists p {
+    width: 100%;
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 0;
+  }
+
+  .navbar.smallerNavbar #menu {
+    margin-left: 0px;
+  }
+
+  .navbar.smallerNavbar #lists p span:last-of-type {
+    margin-left: 10px;
+  }
+
+  .navbar.smallerNavbar #userInfos {
+    display: block;
+  }
+
+  .navbar #userInfos li {
+    padding: 0;
+  }
+
+  .container ul p {
+    margin-left: 0;
+  }
+
+  .navbar.smallerNavbar .container {
+    border-right: initial;
+  }
+
+  .navbar #logo {
+    width: 50px;
+  }
+
+  .navbar.smallerNavbar #menu {
+    border-bottom: 1px solid rgba(231, 231, 231, 0.3);
   }
 }

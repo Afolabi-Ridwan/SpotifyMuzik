@@ -1,8 +1,9 @@
+export const search = async (searchInput) => {
+  // const title = "runtown";
 
-const Search = () => {
-  const title = "runtown";
+  
 
-  const url = `https://spotify81.p.rapidapi.com/search?q=${title}%20&type=multi&offset=0&limit=10&numberOfTopResults=5`;
+  const url = `https://spotify81.p.rapidapi.com/search?q=${searchInput}%20&type=multi&offset=0&limit=10&numberOfTopResults=5`;
   const options = {
     method: "GET",
     headers: {
@@ -11,7 +12,6 @@ const Search = () => {
     },
   };
 
-  const clickHandler = async () => {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
@@ -20,13 +20,4 @@ const Search = () => {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  return (
-    <div className="App">
-      <button  onClick={clickHandler}>Get info</button>
-    </div>
-  );
-}
-
-export default Search;
+};

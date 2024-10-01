@@ -13,6 +13,14 @@ export interface Album {
   id: string;
 }
 
+export interface mobileView{
+  albums: any[]
+}
+
+export interface desktopView{
+  albums: any[]
+}
+
 export interface errorProps {
   errorState: string | null;
   errorHandler: React.Dispatch<React.SetStateAction<string | null>>;
@@ -22,4 +30,10 @@ export interface UiProps {
   resultHandler: null | any;
   errorState: string | null;
   errorHandler: React.Dispatch<React.SetStateAction<null | string>>;
+}
+
+export interface playlistsProps{
+  albums: any[],
+  title: string;
+  error: any
 }

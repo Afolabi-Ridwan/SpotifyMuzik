@@ -1,9 +1,10 @@
 
 import "./loaderPage.css";
-import spotifyLogo from "../../Assets/Images/SpotifyLogoPNGImage.png"
+import spotifyLogo from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png"
 import { useEffect, useState } from "react";
 import UserLocation from "../HomePage/UserLocation/userLocation";
 import Context from "../../Services/Context/createContext";
+
 
 const context = {
   usercountry: "",

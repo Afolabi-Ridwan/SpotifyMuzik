@@ -1,46 +1,52 @@
-.container ul p {
+
+  .containers ul p {
   color: white;
   text-align: left;
   margin-left: 10px;
   max-width: 80vw;
 }
 
-.container ul .albumName{
+.containers ul .albumName{
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
-.container #typeAndArtiste{
+.containers #typeAndArtiste{
   font-size: 13px;
   margin-top: -10px;
 }
 
-.container ul {
+.containers ul {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
 }
 
-.container img {
+.containers img {
   border-radius: 5px;
   width: 90%;
 }
 
-.container li {
+.containers li {
   max-width: auto;
+  list-style: none;
 }
 
-.container .imageCont {
+.containers .imageCont {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.containers h1{
+  padding-left: 10px;
+}
 
 #typeAndArtiste{
   color: rgb(197, 194, 194);
   text-transform: capitalize;
+
 }
 
 .scrollableList{
@@ -57,6 +63,7 @@
 .scrollableList #typeAndArtiste{
   font-size: 13px;
   margin-top: -10px;
+  text-transform: capitalize;
 }
 
 .scrollableItem {
@@ -70,13 +77,7 @@
 }
 
 @media(max-width: 900px){
-  .container.newReleases{
+  .containers.newReleases{
     margin-top: 90px;
-  }
-}
-
-@media (max-width: 600px){
-  .newReleases.randbnewReleases{
-    /* margin-bottom: -50px; */
   }
 }

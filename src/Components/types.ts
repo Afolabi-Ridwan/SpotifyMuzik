@@ -14,6 +14,3 @@ export interface NavbarTypes {
     searchState: boolean | null;
   }
 
-  export interface topMobileMenuProps {
-    setBarsToggleState: React.Dispatch<React.SetStateAction<boolean>>;
-  }

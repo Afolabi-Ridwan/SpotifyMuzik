@@ -22,14 +22,17 @@
   padding: 0 25px;
 }
 
-.topMobileMenu #title p {
-  margin-left: 7px;
-  font-size: 15px;
+.topMobileMenu #title img{
+  width: 50px;
 }
 
 .topMobileMenu .menu {
   display: flex;
   align-items: center;
+}
+
+.topMobileMenu .menu.mobileViewMenu{
+  display: none;
 }
 
 .topMobileMenu .user {
@@ -59,7 +62,7 @@
   color: white;
   border: 1px solid rgba(231, 231, 231, 0.3);
   border-radius: 10px;
-  padding: 12px 45px;
+  padding: 12px 35px;
 }
 
 .topMobileMenu .inputTab {
@@ -73,7 +76,7 @@
   font-size: 15px;
 }
 
-.in {
+.inputCont {
   width: 70vw;
   display: flex;
   align-items: center;
@@ -81,7 +84,7 @@
   padding: 0 10px;
 }
 
-.topMobileMenu .in.smallerNavbar {
+.topMobileMenu .inputCont.smallerNavbar {
   width: 80vw;
   padding: 0;
   padding: 0 10px;
@@ -132,16 +135,33 @@
 }
 
 @media (max-width: 900px) {
+
+  .topMobileMenu{
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .topMobileMenu #title {
+    padding: 0 ;
+    width: unset;
+  }
+
   .topMobileMenu .inputTab {
-    position: absolute;
-    left: 0;
-    top: 15px;
-    width: 100%;
-    flex-direction: column;
-    height: unset;
-    flex-direction: column;
     display: none;
-    z-index: 10;
+  }
+
+  .topMobileMenu .menu.mobileViewMenu{
+    display: block;
+    display: flex;
+  align-items: center;
+  }
+
+  .topMobileMenu .in.smallerNavbar {
+    width: unset;
+  }
+
+  .topMobileMenu .menu.desktopViewMenu p{
+    display: none;
   }
 
   .topMobileMenu .inputTab.openInput {
@@ -150,4 +170,25 @@
     align-items: center;
     justify-content: center;
   }
+
+  .inputCont {
+    width: unset;
+  }
+  
+  .topMobileMenu .inputCont.smallerNavbar {
+    width: unset;
+  }
+
+  .topMobileMenu .inputTab .input {
+    width: unset;
+      }
+  
+  .topMobileMenu .inputTab .input input {
+    width: 60vw;
+  }
+  
+  .topMobileMenu .inputTab {
+    width: unset;
+  }
 }
+

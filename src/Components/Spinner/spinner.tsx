@@ -1,10 +1,10 @@
-import "./spinner.css"
+import style from  "./spinner.module.css"
 
 const Spinner = () => {
  
     return (
-    <div className="spin">
-      <div className="spinner"></div>
+    <div className={style.spin}>
+      <div className={style.spinner}></div>
     </div>
   );
 };

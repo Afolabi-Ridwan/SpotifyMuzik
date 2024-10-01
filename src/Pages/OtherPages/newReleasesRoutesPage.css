@@ -65,13 +65,15 @@
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .newReleasesRoutesPage li p:first-of-type {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   color: rgb(201, 201, 201);
 }
+
 
 .newReleasesRoutesPage li div:first-of-type p:last-of-type {
   text-transform: capitalize;
@@ -98,11 +100,14 @@
 
 .newReleasesRoutesPage .tracknameAndArtists .trackName {
   font-size: 20px;
+  font-weight: 800;
+  
 }
 
 .newReleasesRoutesPage .tracknameAndArtists .artistName {
   font-size: 15px;
-  margin-top: -30px;
+  margin-top: -24px;
+  letter-spacing: 0.4px;
 }
 
 .navBarAndMenu {

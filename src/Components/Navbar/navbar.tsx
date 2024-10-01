@@ -1,33 +1,36 @@
 import {
-  FaBars,
   FaChevronUp,
   FaCompass,
   FaFileAudio,
   FaHouseUser,
   FaPlay,
   FaPlus,
+  FaTimes
 } from "react-icons/fa";
-import "./navbar.css";
 import { Link } from "react-router-dom";
 import { NavbarTypes } from "../types";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { BarsToggleContext } from "../../Services/Context/barsToggleContext";
+import logoImg from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png"
+import style from "./navbar.module.css"
 
-const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, setArtistName }) => {
+const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName}) => {
   const returnHome = () => {
     searchStateHandler && searchStateHandler(false);
     setArtistName && setArtistName("");
   };
 
-  const {setBarsToggleState} = useContext(BarsToggleContext)
+  const {setBarsToggleState} = useContext(BarsToggleContext);
+
   const barsToggleHandler = () => {
-    setBarsToggleState(prev => !prev);    
+    setBarsToggleState(false)
   };
 
   const [scrollState, setScrollState] = useState(false);
 
-  const {barsToggleState} = useContext(BarsToggleContext)
+  const {barsToggleState} = useContext(BarsToggleContext);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -45,23 +48,25 @@ const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, se
   }, []);
 
   return (
-    <div className={` navbar  ${barsToggleState && "smallerNavbar"} ${mobileMenuState && "openMenu"} ${scrollState && "scrolled"}`}>
-      <div className={`container ${scrollState && "scrolled"}`}>
-        <div className="header">
+    <div className={` ${style.navbar} ${barsToggleState && style.active}  ${barsToggleState && style.smallerNavbar}  ${scrollState && style.scrolled}`}>
+      <div className={`${style.container} ${scrollState && style.scrolled}`}>
+        <div className={style.header}>
           <p>
             {" "}
             <span
-              style={{ cursor: "pointer", fontSize: "23px", padding: "0",}}
+              style={{ cursor: "pointer", fontSize: "23px", padding: "0", fontWeight: "100"}}
               onClick={barsToggleHandler}
             >
-              <FaBars />
+              <FaTimes />
             </span>{" "}
-            <span>Spotify Muzik</span>
+            <span>
+              <img src={logoImg} alt="logo" id={style.logo}/>
+            </span>
           </p>
         </div>
-        <div id="menu">
-          <div id="lists">
-            <Link to={"/"} className="linkTag">
+        <div id={style.menu}>
+          <div id={style.lists}>
+            <Link to={"/"} className={"linkTag"}>
               <p
                 onClick={returnHome}
               >
@@ -97,11 +102,11 @@ const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, se
           </div>
         </div>
 
-        <div id="userInfos">
+        <div id={style.userInfos}>
           <button>
             {" "}
             <span>
-              <FaPlus className="plusSign" />
+              <FaPlus className={style.plusSign} />
             </span>{" "}
             New Playlist{" "}
           </button>
@@ -111,7 +116,7 @@ const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, se
                 <p> Liked Music</p>
                 <p> Auto Playlist </p>
               </div>
-              <div className="playIcon">
+              <div className={style.playIcon}>
                 <FaPlay />
               </div>
             </li>
@@ -120,7 +125,7 @@ const Navbar: React.FC<NavbarTypes> = ({ mobileMenuState, searchStateHandler, se
                 <p>Episodes for Later </p>
                 <p> Auto playlist</p>
               </div>
-              <div className="playIcon">
+              <div className={style.playIcon}>
                 <FaPlay />
               </div>
             </li>

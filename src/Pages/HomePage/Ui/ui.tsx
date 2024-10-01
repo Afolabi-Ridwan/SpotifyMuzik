@@ -7,7 +7,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import NewReleases from "../NewReleases/newReleases";
 import { settings } from "../../../Providers/sliderSetting";
 import Navbar from "../../../Components/Navbar/navbar";
-import TopMobileMenu from "../../../Components/Menu/TopMobileMenu/topMobileMenu";
+import TopMobileMenu from "../../../Components/Menu/topMenu";
 import SearchResult from "../SearchResult/searchResult";
 
 import { UiProps } from "../../types";
@@ -16,6 +16,9 @@ import RandB from "../RandBPlaylists/randb";
 import SoulPlaylists from "../SoulPlaylists/soulPlaylists";
 import { BarsToggleContext } from "../../../Services/Context/barsToggleContext";
 import firstImage from "../../../Assets/Images/unnamed (1).jpg";
+import BackgroundStyle from "./BackgroundStyle/backgroundStyle";
+
+
 const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
   const sliderRef = useRef<Slider>(null);
 
@@ -39,43 +42,10 @@ const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
 
   const { barsToggleState } = useContext(BarsToggleContext);
   return (
-    <div
-      className="body"
-      style={
-        randomNumber === 0
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 1) 100%), url("/unnamed (1).jpg") no-repeat`,
-            }
-          : randomNumber === 1
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 100%), url("/unnamed.jpg") no-repeat`,
-            }
-          : randomNumber === 2
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 1) 100%), url("/2147717095.jpg") no-repeat`,
-            }
-          : randomNumber === 3
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 1) 100%), url("/2147717106.jpg") no-repeat`,
-            }
-          : randomNumber === 4
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 1) 100%), url("/30369.jpg") no-repeat`,
-            }
-          : randomNumber === 5
-          ? {
-              background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 1) 100%), url("/volumetric-musical-background-with-treble-clef-notes-generative-ai.jpg") no-repeat`,
-            }
-          : {}
-      }
-    >
+    <BackgroundStyle>
       <div id="homePageUi">
         <div className="navBarAndMenu">
-          {/* <Navbar
-          searchStateHandler={setSearchState}
-          setArtistName={setArtistName}
-          mobileMenuState={mobileMenuState}
-        /> */}
+         
         </div>
 
         <div className={`pagesCont ${barsToggleState && "biggerContainer"}`}>
@@ -138,7 +108,7 @@ const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler }) => {
           )}
         </div>
       </div>
-    </div>
+      </BackgroundStyle>
   );
 };
 

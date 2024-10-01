@@ -3,7 +3,7 @@ import Loader from "./Pages/LoaderPage/loaderPage";
 import { useState, useEffect } from "react";
 import Homepage from "./Pages/HomePage/homePage";
 import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
-import TopMobileMenu from "./Components/Menu/TopMobileMenu/topMobileMenu";
+import TopMobileMenu from "./Components/Menu/topMenu";
 import Explore from "./Pages/Explore/explore";
 import { useLocation } from "react-router-dom";
 import Context from "./Services/Context/createContext";
@@ -16,6 +16,7 @@ function App() {
   const [showLoader, setShowLoader] = useState(true);
   const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
   const [barsToggleState, setBarsToggleState] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function App() {
       setTimeout(() => {
         setShowLoader(false);
         setHasLoadedOnce(true);
-      }, 2000);
+      }, 3000);
     } else {
       setShowLoader(false);
     }

@@ -44,18 +44,12 @@ const Trending: React.FC<TrendingComponent> = ({
           const result = await response.json();
           setLoadingHandler(true)
           updateResultHandler(result);
-          console.log(result);
-          console.log(response);
-          
 
 
           if (!response.ok) {
             throw new Error("Network response was not ok" + response.statusText)
 
-          } else {
-            // updateErrorState(true);
-            // console.log(errorMessage);
-          }
+          } 
         } 
         catch (error: any) {
           if(error.message === "Failed to fetch"){
@@ -64,12 +58,10 @@ const Trending: React.FC<TrendingComponent> = ({
           } else{
             console.log("An Error occurred")
           }
-          // setErrorMessage(error);
         }
       };
 
       pageLoader();
-    // }, 100);
   }, []);
 
   return null;

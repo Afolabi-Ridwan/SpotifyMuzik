@@ -30,6 +30,7 @@ export interface UiProps {
   resultHandler: null | any;
   errorState: string | null;
   errorHandler: React.Dispatch<React.SetStateAction<null | string>>;
+  searchState: boolean
 }
 
 export interface playlistsProps{

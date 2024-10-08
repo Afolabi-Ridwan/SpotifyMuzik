@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarTypes> = ({ searchStateHandler, setArtistName}) => 
         </div>
         <div id={style.menu}>
           <div id={style.lists}>
-            <Link to={"/"} className={"linkTag"}>
+            <Link to={"/"} className={"linkTag"} onClick={() => setBarsToggleState(false)}>
               <p
                 onClick={returnHome}
               >

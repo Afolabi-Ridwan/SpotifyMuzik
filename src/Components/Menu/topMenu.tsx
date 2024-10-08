@@ -6,8 +6,14 @@ import { BarsToggleContext } from "../../Services/Context/barsToggleContext";
 import { useContext } from "react";
 import logoImg from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png";
 import { search } from "../../Services/Api/searchAPI";
+import { useNavigate } from "react-router";
+import { SearchStateContext } from "../../Services/Context/searchStateContext"; 
 
-const TopMobileMenu = () => {
+interface propType {
+  searchStateHandler: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const TopMobileMenu: React.FC<propType> = ({ searchStateHandler}) => {
   const [inputState, setInputState] = useState(false);
   const [input, setInput] = useState("");
   const [scrollState, setScrollState] = useState(false);
@@ -42,13 +48,22 @@ const TopMobileMenu = () => {
   };
 
   const setInputHandler = (e: any) => {
-    setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
 
-  const submitHandler = (e: any) => {
-    e.preventDefault();
-    search(input);
-  }
+  const navigate = useNavigate();
+
+  const submitHandler = async(e: any) => {
+    e.preventDefault();    
+
+    searchStateHandler(true);
+
+    await search(input);
+
+    searchStateHandler(false);
+      
+    navigate(`/searchResult/${input}`);
+  };
 
   return (
     <div className={`${style.topMobileMenu}  ${scrollState && style.scrolled}`}>
@@ -65,8 +80,11 @@ const TopMobileMenu = () => {
             barsToggleState && style.smallerNavbar
           }`}
         >
-          <form className={style.input} onSubmit={e => submitHandler(e)}>
-            <input placeholder="Search songs, albums, artists, podcasts" onChange={ (e: any) => setInputHandler(e)}/>
+          <form className={style.input} onSubmit={(e) => submitHandler(e)}>
+            <input
+              placeholder="Search songs, albums, artists, podcasts"
+              onChange={(e: any) => setInputHandler(e)}
+            />
 
             <div
               className={style.backwardIcon}

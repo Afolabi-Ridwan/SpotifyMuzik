@@ -1,6 +1,6 @@
 
 import "./loaderPage.css";
-import spotifyLogo from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png"
+import logoImg from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png"
 import { useEffect, useState } from "react";
 import UserLocation from "../HomePage/UserLocation/userLocation";
 import Context from "../../Services/Context/createContext";
@@ -24,7 +24,7 @@ const Loader = () => {
     <div>
       <Context.Provider value={{...context, userCountry: userCountry}}>      
         <div className="loaderPage">
-          <img src={spotifyLogo} alt="spotify-logo" />
+          <img src={logoImg} alt="logoImage" />
         </div>
         </Context.Provider>
     </div>

@@ -1,9 +1,9 @@
 import { useParams } from "react-router";
 import "./newReleasesRoutesPage.css";
-import "../HomePage/Ui/ui.css";
+import "../../HomePage/Ui/ui.css";
 import { useContext, useEffect, useState } from "react";
-import { getAlbumTracklists } from "../../Services/Api/newReleasesAPI";
-import { BarsToggleContext } from "../../Services/Context/barsToggleContext";
+import { getAlbumTracklists } from "../../../Services/Api/newReleasesAPI";
+import { BarsToggleContext } from "../../../Services/Context/barsToggleContext";
 import { GoDotFill } from "react-icons/go";
 
 type objectType = {

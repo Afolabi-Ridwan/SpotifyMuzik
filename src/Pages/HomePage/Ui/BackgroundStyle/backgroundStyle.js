@@ -7,7 +7,6 @@ const BackgroundStyle = ({ children }) => {
     const randomNumberHandler = () => {
       updateRandomNumber(Math.floor(Math.random() * 5));
     };
-    console.log(randomNumber);
     randomNumberHandler();
   }, [randomNumber]);
 

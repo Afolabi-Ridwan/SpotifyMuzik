@@ -1,14 +1,23 @@
-// src/SearchResult.tsx
-import React, { useState } from 'react';
-import './searchResult.css';
-import { propType } from '../../types';
+import React, { useEffect, useState } from "react";
+import "./searchResult.css";
+// import { propType } from "../../types";
+import { searchContext } from "../../../Services/Context/searchResult";
+import { search } from "../../../Services/Api/searchAPI";
+import { useParams } from "react-router";
+import { useContext } from "react";
+import { SearchStateContext } from "../../../Services/Context/searchStateContext";
 
-const SearchResult: React.FC<propType> = ({albums, error, artistName}) => {
 
+const SearchResult = () => {
+
+
+    // useEffect(() => {
+    //   console.log(searchState);
+    // }, [searchState])
 
   return (
-    <div className="searchResult" >
-      <h1> {artistName}</h1>
+    <div className="searchResult">
+      {/* <h1> {artistName}</h1>
       
       {error && <p>{error}</p>}
       <div className="albums">
@@ -18,9 +27,9 @@ const SearchResult: React.FC<propType> = ({albums, error, artistName}) => {
             <p>{album.name}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
-}
+};
 
 export default SearchResult;

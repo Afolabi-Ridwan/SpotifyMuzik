@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from "react";
 import "./searchResult.css";
-// import { propType } from "../../types";
-import { searchContext } from "../../../Services/Context/searchResult";
-import { search } from "../../../Services/Api/searchAPI";
-import { useParams } from "react-router";
-import { useContext } from "react";
-import { SearchStateContext } from "../../../Services/Context/searchStateContext";
-
+import { searchContext } from "../../../Services/Context/searchResultContext";
+import PlaylistsTemplates from "../PlaylistsTemplates/playlistsTemplates";
+import style from "../NewReleases/newReleases.module.css";
+import "../Ui/ui.css";
 
 const SearchResult = () => {
+  const data = searchContext.getState().data;
+  console.log(data);
+  const albums = data.albums.items.map((item: any) => {
+    return item;
+  });
 
+  const artists = data.artists.items.map((item: any) => {
+    return item;
+  });
 
-    // useEffect(() => {
-    //   console.log(searchState);
-    // }, [searchState])
+  const tracks = data.tracks.items.map((item: any) => {
+    return item;
+  });
 
   return (
-    <div className="searchResult">
-      {/* <h1> {artistName}</h1>
-      
-      {error && <p>{error}</p>}
-      <div className="albums">
-        {albums.map(album => (
-          <div key={album.id} className="album">
-            <img src={album.images[0].url} alt={album.name} />
-            <p>{album.name}</p>
+    <div id="homePageUi">
+        <div className="navBarAndMenu"></div>
+
+      <div className={`pagesCont ${false && "biggerContainer"}`}>
+        <div className={`allPlaylists ${false && "biggerContainer"}`}>
+          <div className={`${style.containers} ${style.randbContainer}`}>
+            <PlaylistsTemplates title={"Albums"} albums={albums} error={""} />
+            <PlaylistsTemplates title={"Artists"} albums={artists} error={""} />
+            <PlaylistsTemplates title={"Tracks"} albums={tracks} error={""} />
           </div>
-        ))}
-      </div> */}
+        </div>
+      </div>
     </div>
   );
 };

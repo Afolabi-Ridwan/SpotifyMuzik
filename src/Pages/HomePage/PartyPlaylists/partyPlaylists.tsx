@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import style from "../NewReleases/newReleases.module.css";
 import { getPlaylists } from "../../../Services/Api/partyPlaylistsAPI";
-import { getToken } from "../../../Services/Api/getToken";
 import PlaylistsTemplates from "../PlaylistsTemplates/playlistsTemplates";
 
 const PartyPlaylists = () => {
@@ -12,8 +11,7 @@ const PartyPlaylists = () => {
   useEffect(() => {
     const fetchPlaylists = async () => {
       try {
-        const accessToken = await getToken();
-        const playlists = await getPlaylists(accessToken);
+        const playlists = await getPlaylists();
         setPlaylists(playlists);
       } catch (err) {
         setError("Failed to fetch playlists");

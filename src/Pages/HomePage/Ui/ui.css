@@ -31,6 +31,11 @@
   max-width: 80vw;
 }
 
+.pagesCont .allPlaylists.biggerContainer img{
+  height: 210px;
+
+}
+
 .leftArrow,
 .rightArrow {
   height: 30px;

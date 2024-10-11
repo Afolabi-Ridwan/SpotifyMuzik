@@ -86,8 +86,7 @@ const NewReleasesRoutesPage = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           margin: "0",
-          padding: "0 50px",
-          height: "100%",
+            height: "100%",
         }}
       >
         <div className="newReleasesRoutesPage">
@@ -109,7 +108,7 @@ const NewReleasesRoutesPage = () => {
                 <img
                   src={albumInfo.images[0].url && albumInfo.images[0].url}
                   alt="Album Artwork"
-                  style={{ width: "100%" }}
+                 
                 />
                 <p className="albumName"> {albumInfo.name}</p>
 

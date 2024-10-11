@@ -13,7 +13,6 @@ const context = {
 
 const Loader = () => {
   const [userCountry, setUserCountry] = useState("");
-  console.log(userCountry)
 
   useEffect(() => {
     

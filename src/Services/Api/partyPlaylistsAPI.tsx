@@ -1,6 +1,9 @@
 import axios from "axios";
+import { getToken } from "./getToken";
+export const getPlaylists = async (): Promise<any> => {
 
-export const getPlaylists = async (accessToken: string): Promise<any> => {
+  const accessToken = await getToken();
+
   const response = await axios.get(
     `https://api.spotify.com/v1/browse/categories/party/playlists`,
     {

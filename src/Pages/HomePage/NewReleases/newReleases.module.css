@@ -26,6 +26,8 @@
 .containers img {
   border-radius: 5px;
   width: 90%;
+  height: 180px;
+  object-fit: cover;
 }
 
 .containers li {
@@ -39,6 +41,11 @@
   align-items: center;
   justify-content: center;
 }
+
+/* .containers .imageCont img{
+  object-fit: contain;
+} */
+
 .containers h1{
   padding-left: 10px;
 }
@@ -79,5 +86,11 @@
 @media(max-width: 900px){
   .containers.newReleases{
     margin-top: 90px;
+  }
+
+  .containers img {
+    
+    height: 400px;
+    object-fit: cover;
   }
 }

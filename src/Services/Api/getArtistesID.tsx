@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getToken } from './getToken';
 
 
 export const getAlbums = async (accessToken: string, artistId: string): Promise<any> => {

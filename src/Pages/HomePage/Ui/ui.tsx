@@ -32,7 +32,6 @@ const Ui: React.FC<UiProps> = ({ resultHandler, errorState, errorHandler, search
     const randomNumberHandler = () => {
       updateRandomNumber(Math.floor(Math.random() * 5));
     };
-    console.log(randomNumber);
     randomNumberHandler();
   }, [randomNumber]);
 

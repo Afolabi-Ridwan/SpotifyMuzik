@@ -7,7 +7,6 @@ import { useContext } from "react";
 import logoImg from "../../Assets/Images/human-face-with-music-note-design-3d-rendered-illustration.png";
 import { search } from "../../Services/Api/searchAPI";
 import { useNavigate } from "react-router";
-import { SearchStateContext } from "../../Services/Context/searchStateContext"; 
 
 interface propType {
   searchStateHandler: React.Dispatch<React.SetStateAction<boolean>>
